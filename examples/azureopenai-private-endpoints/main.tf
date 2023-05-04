@@ -1,12 +1,10 @@
 module "openai" {
-  source                  = "../.."
-  resource_group_name     = azurerm_resource_group.this.name
-  location                = azurerm_resource_group.this.location
-  create_private_dns_zone = true
+  source              = "../.."
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
   private_endpoint = {
     "pe_endpoint" = {
       private_dns_entry_enabled       = true
-      dns_zone_rg_name                = azurerm_resource_group.this.name
       dns_zone_virtual_network_link   = "dns_zone_link"
       is_manual_connection            = false
       name                            = "pe_one"

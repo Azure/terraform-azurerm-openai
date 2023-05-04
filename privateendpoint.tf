@@ -1,6 +1,6 @@
 locals {
-  private_dns_zone_id   = var.create_private_dns_zone ? azurerm_private_dns_zone.dns_zone[0].id : var.private_dns_zone_id
-  private_dns_zone_name = try(azurerm_private_dns_zone.dns_zone[0].name, var.private_dns_zone.name)
+  private_dns_zone_id   = try(azurerm_private_dns_zone.dns_zone[0].id, data.azurerm_private_dns_zone.dns_zone[0].id)
+  private_dns_zone_name = try(azurerm_private_dns_zone.dns_zone[0].name, data.azurerm_private_dns_zone.dns_zone[0].name)
 }
 
 resource "azurerm_private_endpoint" "this" {
@@ -16,7 +16,7 @@ resource "azurerm_private_endpoint" "this" {
     is_manual_connection           = each.value.is_manual_connection
     name                           = each.value.private_service_connection_name
     private_connection_resource_id = azurerm_cognitive_account.this.id
-    subresource_names              = [var.pe_subresource]
+    subresource_names              = var.pe_subresource
   }
   dynamic "private_dns_zone_group" {
     for_each = each.value.private_dns_entry_enabled ? ["private_dns_zone_group"] : []
@@ -26,6 +26,13 @@ resource "azurerm_private_endpoint" "this" {
       private_dns_zone_ids = [local.private_dns_zone_id]
     }
   }
+}
+
+data "azurerm_private_dns_zone" "dns_zone" {
+  count = var.private_dns_zone == null ? 0 : 1
+
+  name                = var.private_dns_zone.name
+  resource_group_name = var.private_dns_zone.resource_group_name
 }
 
 resource "azurerm_private_dns_zone" "dns_zone" {
@@ -39,7 +46,7 @@ resource "azurerm_private_dns_zone" "dns_zone" {
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_zone_link" {
   for_each = var.private_endpoint
 
-  name                  = each.value.dns_zone_virtual_network_link
+  name                  = each.value.dns_zone_virtual_network_link_name
   private_dns_zone_name = local.private_dns_zone_name
   resource_group_name   = data.azurerm_resource_group.this.name
   virtual_network_id    = data.azurerm_virtual_network.vnet[each.key].id

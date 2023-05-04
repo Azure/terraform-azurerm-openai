@@ -1,6 +1,6 @@
 resource "random_integer" "this" {
-  min = 100000
   max = 999999
+  min = 100000
 }
 
 locals {
