@@ -24,7 +24,7 @@ To enable tracing tags, set the variable to true:
 
 ```hcl
 module "example" {
-  source               = "<module_source>"
+  source               = "{module_source}"
   ...
   tracing_tags_enabled = true
 }
@@ -36,7 +36,7 @@ To customize the prefix for your tracing tags, set the `tracing_tags_prefix` var
 
 ```hcl
 module "example" {
-  source              = "<module_source>"
+  source              = "{module_source}"
   ...
   tracing_tags_prefix = "custom_prefix_"
 }
