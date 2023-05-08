@@ -20,7 +20,14 @@ resource "azurerm_cognitive_account" "this" {
   sku_name                      = var.sku_name
   custom_subdomain_name         = local.azureopenai_customsubdomain_name
   public_network_access_enabled = var.public_network_access_enabled
-  tags                          = local.tags
+  tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-05-04 10:08:08"
+    avm_git_org              = "Azure"
+    avm_git_repo             = "terraform-azurerm-openai"
+    avm_yor_trace            = "a5adc3a7-fa9e-4f60-a2a6-44aa887f280b"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
 resource "azurerm_cognitive_deployment" "this" {
