@@ -3,7 +3,7 @@ module "openai" {
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   deployment = {
-    "text-curie-001" = {
+    "text-davinci-003" = {
       name          = "text-davinci-003"
       model_format  = "OpenAI"
       model_name    = "text-davinci-003"
