@@ -1,10 +1,11 @@
 # Changelog
 
-## [Unreleased](https://github.com/soferreira/terraform-azurerm-azureopenai/tree/HEAD)
+## [Unreleased](https://github.com/Azure/terraform-azurerm-openai/tree/HEAD)
 
 **Merged pull requests:**
 
-- Refactor to be a verified module [\#1](https://github.com/soferreira/terraform-azurerm-azureopenai/pull/1) ([lonegunmanb](https://github.com/lonegunmanb))
+- Correct 1es runner pool name, add tracing tag toggle variables [\#5](https://github.com/Azure/terraform-azurerm-openai/pull/5) ([lonegunmanb](https://github.com/lonegunmanb))
+- Adding Microsoft SECURITY.MD [\#1](https://github.com/Azure/terraform-azurerm-openai/pull/1) ([microsoft-github-policy-service[bot]](https://github.com/apps/microsoft-github-policy-service))
 
 
 

@@ -1,6 +1,60 @@
 # terraform-azurerm-azureopenai
 Azure OpenAI Terraform Module and Samples
 
+## Enable or disable tracing tags
+
+We're using [BridgeCrew Yor](https://github.com/bridgecrewio/yor) and [yorbox](https://github.com/lonegunmanb/yorbox) to help manage tags consistently across infrastructure as code (IaC) frameworks. In this module you might see tags like:
+
+```hcl
+resource "azurerm_resource_group" "rg" {
+  location = "eastus"
+  name     = random_pet.name
+  tags = merge(var.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "3077cc6d0b70e29b6e106b3ab98cee6740c916f6"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-05-05 08:57:54"
+    avm_git_org              = "lonegunmanb"
+    avm_git_repo             = "terraform-yor-tag-test-module"
+    avm_yor_trace            = "a0425718-c57d-401c-a7d5-f3d88b2551a4"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
+}
+```
+
+To enable tracing tags, set the variable to true:
+
+```hcl
+module "example" {
+  source               = "{module_source}"
+  ...
+  tracing_tags_enabled = true
+}
+```
+
+The `tracing_tags_enabled` is default to `false`.
+
+To customize the prefix for your tracing tags, set the `tracing_tags_prefix` variable value in your Terraform configuration:
+
+```hcl
+module "example" {
+  source              = "{module_source}"
+  ...
+  tracing_tags_prefix = "custom_prefix_"
+}
+```
+
+The actual applied tags would be:
+
+```text
+{
+  custom_prefix_git_commit           = "3077cc6d0b70e29b6e106b3ab98cee6740c916f6"
+  custom_prefix_git_file             = "main.tf"
+  custom_prefix_git_last_modified_at = "2023-05-05 08:57:54"
+  custom_prefix_git_org              = "lonegunmanb"
+  custom_prefix_git_repo             = "terraform-yor-tag-test-module"
+  custom_prefix_yor_trace            = "a0425718-c57d-401c-a7d5-f3d88b2551a4"
+}
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -56,6 +110,8 @@ No modules.
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled)        | Whether public network access is allowed for the Cognitive Account. Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `bool`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `false`                          |    no    |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name)                                        | Name of the azure resource group to use. The resource group must exist.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | n/a                              |   yes    |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name)                                                                           | Specifies the SKU Name for this Cognitive Service Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`. Default to `S0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"S0"`                           |    no    |
+| <a name="input_tracing_tags_enabled"></a> [tracing\_tags\_enabled](#input\_tracing\_tags\_enabled)                                     | Whether enable tracing tags that generated by BridgeCrew Yor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `bool`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `false`                          |    no    |
+| <a name="input_tracing_tags_prefix"></a> [tracing\_tags\_prefix](#input\_tracing\_tags\_prefix)                                        | Default prefix for generated tracing tags                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"avm_"`                         |    no    |
 
 ## Outputs
 
