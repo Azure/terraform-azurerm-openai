@@ -1,6 +1,6 @@
 locals {
-  private_dns_zone_id   = try(azurerm_private_dns_zone.dns_zone[0].id, data.azurerm_private_dns_zone.dns_zone[0].id)
-  private_dns_zone_name = try(azurerm_private_dns_zone.dns_zone[0].name, data.azurerm_private_dns_zone.dns_zone[0].name)
+  private_dns_zone_id   = var.access_from_private_endpoint ? try(azurerm_private_dns_zone.dns_zone[0].id, data.azurerm_private_dns_zone.dns_zone[0].id) : null
+  private_dns_zone_name = var.access_from_private_endpoint ? try(azurerm_private_dns_zone.dns_zone[0].name, data.azurerm_private_dns_zone.dns_zone[0].name) : null
 }
 
 resource "azurerm_private_endpoint" "this" {
@@ -29,14 +29,14 @@ resource "azurerm_private_endpoint" "this" {
 }
 
 data "azurerm_private_dns_zone" "dns_zone" {
-  count = var.private_dns_zone == null ? 0 : 1
+  count = var.access_from_private_endpoint && var.private_dns_zone == null ? 0 : 1
 
   name                = var.private_dns_zone.name
   resource_group_name = var.private_dns_zone.resource_group_name
 }
 
 resource "azurerm_private_dns_zone" "dns_zone" {
-  count = var.private_dns_zone == null ? 1 : 0
+  count = var.access_from_private_endpoint && var.private_dns_zone == null ? 1 : 0
 
   name                = "privatelink.openai.azure.com"
   resource_group_name = data.azurerm_resource_group.this.name
