@@ -1,7 +1,8 @@
 module "openai" {
-  source              = "../.."
-  resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
+  source                        = "../.."
+  resource_group_name           = azurerm_resource_group.this.name
+  location                      = azurerm_resource_group.this.location
+  public_network_access_enabled = true
   deployment = {
     "text-davinci-003" = {
       name          = "text-davinci-003"

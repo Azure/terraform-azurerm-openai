@@ -26,12 +26,6 @@ variable "azureopenai_customsubdomain_name" {
   description = "The subdomain name used for token-based authentication. Changing this forces a new resource to be created. Leave this variable as default would use a default name with random suffix."
 }
 
-variable "access_from_private_endpoint" {
-  type        = bool
-  default     = false
-  description = "Specifies whether access to the Azure OpenAI account is done throught private endpoint. Changing this forces a new resource to be created. Default to false."
-}
-
 variable "default_tags_enabled" {
   type        = bool
   default     = false

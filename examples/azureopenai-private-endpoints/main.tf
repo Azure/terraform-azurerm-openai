@@ -1,8 +1,7 @@
 module "openai" {
-  source                       = "../.."
-  resource_group_name          = azurerm_resource_group.this.name
-  location                     = azurerm_resource_group.this.location
-  access_from_private_endpoint = true
+  source              = "../.."
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
   private_endpoint = {
     "pe_endpoint" = {
       private_dns_entry_enabled       = true
