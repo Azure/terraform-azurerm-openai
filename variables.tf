@@ -76,7 +76,7 @@ variable "environment" {
 variable "customer_managed_key" {
   type = object({
     key_vault_key_id   = string
-    identity_client_id = string
+    identity_client_id = optional(string)
   })
   default     = null
   description = <<-DESCRIPTION
@@ -96,7 +96,7 @@ variable "fqdns" {
 
 variable "identity" {
   type = object({
-    identity_ids = list(string)
+    identity_ids = optional(list(string))
     type         = string
   })
   default     = null
@@ -116,17 +116,17 @@ variable "local_auth_enabled" {
 
 variable "network_acls" {
   type = object({
-    network_acls_default_action = string
-    ip_rules                    = list(string)
-    virtual_network_rules = object({
+    default_action = string
+    ip_rules       = optional(list(string))
+    virtual_network_rules = optional(object({
       subnet_id                            = string
-      ignore_missing_vnet_service_endpoint = bool
-    })
+      ignore_missing_vnet_service_endpoint = optional(bool)
+    }))
   })
   default     = null
   description = <<-DESCRIPTION
     type = object({
-      network_acls_default_action = (Required) The Default Action to use when no rules match from ip_rules / virtual_network_rules. Possible values are Allow and Deny.
+      default_action = (Required) The Default Action to use when no rules match from ip_rules / virtual_network_rules. Possible values are Allow and Deny.
       ip_rules                    = (Optional) One or more IP Addresses, or CIDR Blocks which should be able to access the Cognitive Account.
       virtual_network_rules = object({
         subnet_id                            = (Required) The ID of a Subnet which should be able to access the OpenAI Account.
@@ -200,7 +200,7 @@ variable "public_network_access_enabled" {
 variable "storage" {
   type = object({
     storage_account_id = string
-    identity_client_id = string
+    identity_client_id = optional(string)
   })
   default     = null
   description = <<-DESCRIPTION

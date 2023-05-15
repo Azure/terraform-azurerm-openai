@@ -44,11 +44,14 @@ resource "azurerm_cognitive_account" "this" {
   dynamic "network_acls" {
     for_each = var.network_acls != null ? [var.network_acls] : []
     content {
-      default_action = network_acls.value.network_acls_default_action
+      default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
-      virtual_network_rules {
-        subnet_id                            = network_acls.value.virtual_network_rules.subnet_id
-        ignore_missing_vnet_service_endpoint = network_acls.value.virtual_network_rules.ignore_missing_vnet_service_endpoint
+      dynamic "virtual_network_rules" {
+        for_each = network_acls.value.virtual_network_rules != null ? [network_acls.value.virtual_network_rules] : []
+        content {
+          subnet_id                            = virtual_network_rules.value.subnet_id
+          ignore_missing_vnet_service_endpoint = virtual_network_rules.value.ignore_missing_vnet_service_endpoint
+        }
       }
     }
   }
