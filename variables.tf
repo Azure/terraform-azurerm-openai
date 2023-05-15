@@ -14,13 +14,13 @@ variable "application_name" {
   description = "Name of the application. A corresponding tag would be created on the created resources if `var.default_tags_enabled` is `true`."
 }
 
-variable "azureopenai_account_name" {
+variable "account_name" {
   type        = string
   default     = ""
   description = "Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created. Leave this variable as default would use a default name with random suffix."
 }
 
-variable "azureopenai_customsubdomain_name" {
+variable "custom_subdomain_name" {
   type        = string
   default     = ""
   description = "The subdomain name used for token-based authentication. Changing this forces a new resource to be created. Leave this variable as default would use a default name with random suffix."

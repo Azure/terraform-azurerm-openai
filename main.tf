@@ -4,8 +4,8 @@ resource "random_integer" "this" {
 }
 
 locals {
-  azureopenai_account_name         = coalesce(var.azureopenai_account_name, "azureopenai-${random_integer.this.result}")
-  azureopenai_customsubdomain_name = coalesce(var.azureopenai_customsubdomain_name, "azureopenai-${random_integer.this.result}")
+  account_name          = coalesce(var.account_name, "azure_openai-${random_integer.this.result}")
+  custom_subdomain_name = coalesce(var.custom_subdomain_name, "azure_openai-${random_integer.this.result}")
   tags = var.default_tags_enabled ? {
     Application_Name = var.application_name
     Environment      = var.environment
@@ -15,10 +15,10 @@ locals {
 resource "azurerm_cognitive_account" "this" {
   kind                               = "OpenAI"
   location                           = local.location
-  name                               = local.azureopenai_account_name
+  name                               = local.account_name
   resource_group_name                = data.azurerm_resource_group.this.name
   sku_name                           = var.sku_name
-  custom_subdomain_name              = local.azureopenai_customsubdomain_name
+  custom_subdomain_name              = local.custom_subdomain_name
   public_network_access_enabled      = var.public_network_access_enabled
   dynamic_throttling_enabled         = var.dynamic_throttling_enabled
   fqdns                              = var.fqdns
@@ -60,7 +60,7 @@ resource "azurerm_cognitive_account" "this" {
       identity_client_id = storage.value.identity_client_id
     }
   }
-  
+
   tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
     avm_git_file             = "main.tf"
