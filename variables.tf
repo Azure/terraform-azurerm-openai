@@ -85,6 +85,7 @@ variable "customer_managed_key" {
       identity_client_id = (Optional) The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the OpenAI Account.
     })
   DESCRIPTION
+  sensitive   = true
 }
 
 variable "fqdns" {
