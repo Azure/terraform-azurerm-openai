@@ -47,7 +47,7 @@ resource "azurerm_cognitive_account" "this" {
       default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
       dynamic "virtual_network_rules" {
-        for_each = network_acls.value.virtual_network_rules != null ? [network_acls.value.virtual_network_rules] : []
+        for_each = network_acls.value.virtual_network_rules
         content {
           subnet_id                            = virtual_network_rules.value.subnet_id
           ignore_missing_vnet_service_endpoint = virtual_network_rules.value.ignore_missing_vnet_service_endpoint
@@ -57,7 +57,7 @@ resource "azurerm_cognitive_account" "this" {
   }
 
   dynamic "storage" {
-    for_each = var.storage != null ? [var.storage] : []
+    for_each = var.storage
     content {
       storage_account_id = storage.value.storage_account_id
       identity_client_id = storage.value.identity_client_id
