@@ -19,11 +19,19 @@ resource "azurerm_cognitive_account" "this" {
   resource_group_name                = data.azurerm_resource_group.this.name
   sku_name                           = var.sku_name
   custom_subdomain_name              = local.custom_subdomain_name
-  public_network_access_enabled      = var.public_network_access_enabled
   dynamic_throttling_enabled         = var.dynamic_throttling_enabled
   fqdns                              = var.fqdns
   local_auth_enabled                 = var.local_auth_enabled
   outbound_network_access_restricted = var.outbound_network_access_restricted
+  public_network_access_enabled      = var.public_network_access_enabled
+  tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "0f4ab7f7144efaef16afbc1b0e3d4b9e6ca0a29d"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-05-19 09:48:38"
+    avm_git_org              = "Azure"
+    avm_git_repo             = "terraform-azurerm-openai"
+    avm_yor_trace            = "815b3cf6-8a66-4b19-93ad-ec3ef94f09f9"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   dynamic "customer_managed_key" {
     for_each = var.customer_managed_key != null ? [var.customer_managed_key] : []
@@ -32,7 +40,6 @@ resource "azurerm_cognitive_account" "this" {
       identity_client_id = customer_managed_key.value.identity_client_id
     }
   }
-
   dynamic "identity" {
     for_each = var.identity != null ? [var.identity] : []
     content {
@@ -40,12 +47,12 @@ resource "azurerm_cognitive_account" "this" {
       identity_ids = identity.value.identity_ids
     }
   }
-
   dynamic "network_acls" {
     for_each = var.network_acls != null ? [var.network_acls] : []
     content {
       default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
+
       dynamic "virtual_network_rules" {
         for_each = network_acls.value.virtual_network_rules != null ? network_acls.value.virtual_network_rules : []
         content {
@@ -55,7 +62,6 @@ resource "azurerm_cognitive_account" "this" {
       }
     }
   }
-
   dynamic "storage" {
     for_each = var.storage
     content {
@@ -63,15 +69,6 @@ resource "azurerm_cognitive_account" "this" {
       identity_client_id = storage.value.identity_client_id
     }
   }
-
-  tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
-    avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
-    avm_git_file             = "main.tf"
-    avm_git_last_modified_at = "2023-05-04 10:08:08"
-    avm_git_org              = "Azure"
-    avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "f2cd810e-f074-4d03-ae39-05d2902c6f79"
-  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
 resource "azurerm_cognitive_deployment" "this" {

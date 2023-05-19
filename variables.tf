@@ -8,22 +8,36 @@ variable "resource_group_name" {
   description = "Name of the azure resource group to use. The resource group must exist."
 }
 
-variable "application_name" {
-  type        = string
-  default     = ""
-  description = "Name of the application. A corresponding tag would be created on the created resources if `var.default_tags_enabled` is `true`."
-}
-
 variable "account_name" {
   type        = string
   default     = ""
   description = "Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created. Leave this variable as default would use a default name with random suffix."
 }
 
+variable "application_name" {
+  type        = string
+  default     = ""
+  description = "Name of the application. A corresponding tag would be created on the created resources if `var.default_tags_enabled` is `true`."
+}
+
 variable "custom_subdomain_name" {
   type        = string
   default     = ""
   description = "The subdomain name used for token-based authentication. Changing this forces a new resource to be created. Leave this variable as default would use a default name with random suffix."
+}
+
+variable "customer_managed_key" {
+  type = object({
+    key_vault_key_id   = string
+    identity_client_id = optional(string)
+  })
+  default     = null
+  description = <<-DESCRIPTION
+    type = object({
+      key_vault_key_id   = (Required) The ID of the Key Vault Key which should be used to Encrypt the data in this OpenAI Account.
+      identity_client_id = (Optional) The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the OpenAI Account.
+    })
+  DESCRIPTION
 }
 
 variable "default_tags_enabled" {
@@ -73,26 +87,11 @@ variable "environment" {
   description = "Environment of the application. A corresponding tag would be created on the created resources if `var.default_tags_enabled` is `true`."
 }
 
-variable "customer_managed_key" {
-  type = object({
-    key_vault_key_id   = string
-    identity_client_id = optional(string)
-  })
-  default     = null
-  description = <<-DESCRIPTION
-    type = object({
-      key_vault_key_id   = (Required) The ID of the Key Vault Key which should be used to Encrypt the data in this OpenAI Account.
-      identity_client_id = (Optional) The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the OpenAI Account.
-    })
-  DESCRIPTION
-}
-
 variable "fqdns" {
   type        = list(string)
   default     = null
   description = "List of FQDNs allowed for the Cognitive Account."
 }
-
 
 variable "identity" {
   type = object({
@@ -197,6 +196,12 @@ variable "public_network_access_enabled" {
   description = "Whether public network access is allowed for the Cognitive Account. Defaults to `false`."
 }
 
+variable "sku_name" {
+  type        = string
+  default     = "S0"
+  description = "Specifies the SKU Name for this Cognitive Service Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`. Default to `S0`."
+}
+
 variable "storage" {
   type = list(object({
     storage_account_id = string
@@ -210,12 +215,6 @@ variable "storage" {
     }))
   DESCRIPTION
   nullable    = false
-}
-
-variable "sku_name" {
-  type        = string
-  default     = "S0"
-  description = "Specifies the SKU Name for this Cognitive Service Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`. Default to `S0`."
 }
 
 # tflint-ignore: terraform_unused_declarations
