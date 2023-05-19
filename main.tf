@@ -26,7 +26,7 @@ resource "azurerm_cognitive_account" "this" {
     avm_git_last_modified_at = "2023-05-04 10:08:08"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "a5adc3a7-fa9e-4f60-a2a6-44aa887f280b"
+    avm_yor_trace            = "f2cd810e-f074-4d03-ae39-05d2902c6f79"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
