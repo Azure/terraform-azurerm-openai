@@ -124,6 +124,8 @@ No modules.
 | Name                                                                                                 | Description                                                             |
 |------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | <a name="output_openai_endpoint"></a> [openai\_endpoint](#output\_openai\_endpoint)                  | The endpoint used to connect to the Cognitive Service Account.          |
+| <a name="output_openai_primary_key"></a> [openai\_primary\_key](#output\_openai\_primary\_key)       | The primary access key for the Cognitive Service Account.               |
+| <a name="output_openai_secondary_key"></a> [openai\_secondary\_key](#output\_openai\_secondary\_key) | The secondary access key for the Cognitive Service Account.             |
 | <a name="output_openai_subdomain"></a> [openai\_subdomain](#output\_openai\_subdomain)               | The subdomain used to connect to the Cognitive Service Account.         |
 | <a name="output_private_ip_addresses"></a> [private\_ip\_addresses](#output\_private\_ip\_addresses) | A map dictionary of the private IP addresses for each private endpoint. |
 <!-- END_TF_DOCS -->
