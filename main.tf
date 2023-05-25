@@ -43,7 +43,7 @@ resource "azurerm_cognitive_account" "this" {
   dynamic "identity" {
     for_each = var.identity != null ? [var.identity] : []
     content {
-      type         = identity.value.identity_type
+      type         = identity.value.type
       identity_ids = identity.value.identity_ids
     }
   }
