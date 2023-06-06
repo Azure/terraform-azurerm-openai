@@ -219,15 +219,15 @@ variable "storage" {
 
 variable "diagnostic_setting" {
   type = map(object({
-    name                               = string
-    log_analytics_workspace_id         = optional(string)
-    log_analytics_destination_type     = optional(string)
-    eventhub_name                      = optional(string)
-    eventhub_authorization_rule_id     = optional(string)
-    storage_account_id                 = optional(string)
-    partner_solution_id                = optional(string)
-    retention_policy_enabled           = optional(bool, true)
-    retention_policy_days              = optional(number, 30)
+    name                           = string
+    log_analytics_workspace_id     = optional(string)
+    log_analytics_destination_type = optional(string)
+    eventhub_name                  = optional(string)
+    eventhub_authorization_rule_id = optional(string)
+    storage_account_id             = optional(string)
+    partner_solution_id            = optional(string)
+    retention_policy_enabled       = optional(bool, true)
+    retention_policy_days          = optional(number, 30)
   }))
   default     = {}
   description = <<-DESCRIPTION
