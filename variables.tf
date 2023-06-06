@@ -217,6 +217,36 @@ variable "storage" {
   nullable    = false
 }
 
+variable "diagnostic_setting" {
+  type = map(object({
+    name                               = string
+    log_analytics_workspace_id         = optional(string)
+    log_analytics_destination_type     = optional(string)
+    eventhub_name                      = optional(string)
+    eventhub_authorization_rule_id     = optional(string)
+    storage_account_id                 = optional(string)
+    partner_solution_id                = optional(string)
+    retention_policy_enabled           = optional(bool, true)
+    retention_policy_days              = optional(number, 30)
+  }))
+  default     = {}
+  description = <<-DESCRIPTION
+  A map of objects that represent the configuration for a diagnostic setting."
+  type = map(object({
+    name                               = (Required) Specifies the name of the diagnostic setting. Changing this forces a new resource to be created.
+    log_analytics_workspace_id         = (Optional) (Optional) Specifies the resource id of an Azure Log Analytics workspace where diagnostics data should be sent.
+    log_analytics_destination_type     = (Optional) Possible values are AzureDiagnostics and Dedicated. When set to Dedicated, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table.
+    eventhub_name                      = (Optional) Specifies the name of the Event Hub where diagnostics data should be sent.
+    eventhub_authorization_rule_id     = (Optional) Specifies the resource id of an Event Hub Namespace Authorization Rule used to send diagnostics data.
+    storage_account_id                 = (Optional) Specifies the resource id of an Azure storage account where diagnostics data should be sent.
+    partner_solution_id                = (Optional) The resource id of the market partner solution where diagnostics data should be sent. For potential partner integrations, click to learn more about partner integration.
+    retention_policy_enabled           = (Optional) Specifies whether the retention policy is enabled. If enabled, `retention_policy_days` must be a positive number.
+    retention_policy_days              = (Optional) Specifies the number of days to retain diagnostic logs. If `retention_policy_enabled` is set to `true`, this value must be set to a positive number.
+  }))
+DESCRIPTION
+  nullable    = false
+}
+
 # tflint-ignore: terraform_unused_declarations
 variable "tracing_tags_enabled" {
   type        = bool
