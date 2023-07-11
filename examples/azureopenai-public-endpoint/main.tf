@@ -5,10 +5,10 @@ module "openai" {
   public_network_access_enabled = true
   deployment = {
     "text-davinci-003" = {
-      name          = "text-davinci-003"
+      name          = "gpt-35-turbo"
       model_format  = "OpenAI"
-      model_name    = "text-davinci-003"
-      model_version = "1"
+      model_name    = "gpt-35-turbo"
+      model_version = "0613"
       scale_type    = "Standard"
     },
   }
