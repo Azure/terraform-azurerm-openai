@@ -4,11 +4,11 @@ module "openai" {
   location                      = azurerm_resource_group.this.location
   public_network_access_enabled = true
   deployment = {
-    "text-davinci-003" = {
+    "gpt-35-turbo" = {
       name          = "gpt-35-turbo"
       model_format  = "OpenAI"
       model_name    = "gpt-35-turbo"
-      model_version = "0613"
+      model_version = "0301"
       scale_type    = "Standard"
     },
   }
