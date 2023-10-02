@@ -48,7 +48,7 @@ resource "azurerm_cognitive_account" "this" {
     }
   }
   dynamic "network_acls" {
-    for_each = var.network_acls != null ? [var.network_acls] : []
+    for_each = var.network_acls != null ? var.network_acls : []
     content {
       default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
