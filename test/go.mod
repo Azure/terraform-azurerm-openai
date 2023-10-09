@@ -3,7 +3,7 @@ module github.com/Azure/terraform-azurerm-azureopenai
 go 1.19
 
 require (
-	github.com/Azure/terraform-module-test-helper v0.15.0
+	github.com/Azure/terraform-module-test-helper v0.16.0
 	github.com/gruntwork-io/terratest v0.44.0
 )
 
