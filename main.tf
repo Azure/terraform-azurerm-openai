@@ -6,10 +6,10 @@ resource "random_integer" "this" {
 locals {
   account_name          = coalesce(var.account_name, "azure-openai-${random_integer.this.result}")
   custom_subdomain_name = coalesce(var.custom_subdomain_name, "azure-openai-${random_integer.this.result}")
-  tags = var.default_tags_enabled ? {
+  tags = merge(var.default_tags_enabled ? {
     Application_Name = var.application_name
     Environment      = var.environment
-  } : {}
+  } : {}, var.tags)
 }
 
 resource "azurerm_cognitive_account" "this" {
