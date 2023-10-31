@@ -55,6 +55,7 @@ variable "deployment" {
     model_version   = string
     scale_type      = string
     rai_policy_name = optional(string)
+    capacity        = optional(number)
   }))
   default     = {}
   description = <<-DESCRIPTION
@@ -70,6 +71,7 @@ variable "deployment" {
           scale_type = (Required) Deployment scale type. Possible value is Standard. Changing this forces a new resource to be created.
         }
         rai_policy_name = (Optional) The name of RAI policy. Changing this forces a new resource to be created.
+        capacity = (Optional) Tokens-per-Minute (TPM). The unit of measure for this field is in the thousands of Tokens-per-Minute. Defaults to 1 which means that the limitation is 1000 tokens per minute.
       }))
   DESCRIPTION
   nullable    = false
