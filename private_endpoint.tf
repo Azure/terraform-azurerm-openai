@@ -11,12 +11,14 @@ resource "azurerm_private_endpoint" "this" {
   resource_group_name = data.azurerm_resource_group.pe_vnet_rg[each.key].name
   subnet_id           = data.azurerm_subnet.pe_subnet[each.key].id
   tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
-    avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
-    avm_git_file             = "privateendpoint.tf"
-    avm_git_last_modified_at = "2023-05-04 10:08:08"
+    avm_git_commit           = "89ebd082757e75b1568b79e009c1962ab9f15696"
+    avm_git_file             = "private_endpoint.tf"
+    avm_git_last_modified_at = "2023-06-07 14:06:42"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "165734a0-e538-423c-a70a-c13ca973ad6f"
+    avm_yor_trace            = "aaa20ac1-5fa1-4304-825e-7e17052ca4e1"
+    } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_yor_name = "this"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   private_service_connection {
@@ -48,12 +50,14 @@ resource "azurerm_private_dns_zone" "dns_zone" {
   name                = "privatelink.openai.azure.com"
   resource_group_name = data.azurerm_resource_group.this.name
   tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
-    avm_git_commit           = "0dfe2497a0421d4c7abd975088122ab600ce7c3d"
-    avm_git_file             = "privateendpoint.tf"
-    avm_git_last_modified_at = "2023-05-09 12:30:19"
+    avm_git_commit           = "89ebd082757e75b1568b79e009c1962ab9f15696"
+    avm_git_file             = "private_endpoint.tf"
+    avm_git_last_modified_at = "2023-06-07 14:06:42"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "db697883-e7b7-40fe-9de4-0995b2827243"
+    avm_yor_trace            = "13450e57-892d-4989-9906-27ef671b7a8d"
+    } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_yor_name = "dns_zone"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
 
@@ -66,11 +70,13 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_zone_link" {
   virtual_network_id    = data.azurerm_virtual_network.vnet[each.key].id
   registration_enabled  = false
   tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
-    avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
-    avm_git_file             = "privateendpoint.tf"
-    avm_git_last_modified_at = "2023-05-04 10:08:08"
+    avm_git_commit           = "89ebd082757e75b1568b79e009c1962ab9f15696"
+    avm_git_file             = "private_endpoint.tf"
+    avm_git_last_modified_at = "2023-06-07 14:06:42"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "4f710a67-53d3-47fa-8c7f-b44e0e7cfe7f"
+    avm_yor_trace            = "f98440be-6336-4ea4-89c7-e7452c4595a3"
+    } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_yor_name = "dns_zone_link"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 }
