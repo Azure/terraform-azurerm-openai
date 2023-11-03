@@ -1,5 +1,5 @@
 resource "azurerm_monitor_diagnostic_setting" "setting" {
-  for_each = var.diagnostic_setting
+  for_each = var.diagnostic_settings
 
   name                           = each.value.name
   target_resource_id             = azurerm_cognitive_account.this.id

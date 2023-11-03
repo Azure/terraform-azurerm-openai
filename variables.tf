@@ -75,7 +75,7 @@ variable "deployment" {
   nullable    = false
 }
 
-variable "diagnostic_setting" {
+variable "diagnostic_settings" {
   type = map(object({
     name                           = string
     log_analytics_workspace_id     = optional(string)

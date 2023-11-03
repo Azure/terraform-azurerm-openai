@@ -23,6 +23,38 @@ module "openai" {
       scale_type    = "Standard"
     }
   }
+  diagnostic_settings = {
+    "aoai-svc-diag" = {
+      name                           = "aoai-svc-diag"
+      log_analytics_workspace_id     = azurerm_log_analytics_workspace.this.id
+      log_analytics_destination_type = "AzureDiagnostics"
+
+      audit_log_retention_policy = {
+        enabled = true
+        days    = 30
+      }
+      request_response_log_retention_policy = {
+        enabled = false
+        days    = 30
+      }
+      trace_log_retention_policy = {
+        enabled = false
+        days    = 30
+      }
+      metric_retention_policy = {
+        enabled = false
+        days    = 30
+      }
+    }
+  }
+  network_acls = [{
+    default_action = "Deny",
+    ip_rules       = ["00.00.00.00"]
+    virtual_network_rules = [{
+      subnet_id                            = lookup(module.vnet.vnet_subnets_name_id, "subnet0")
+      ignore_missing_vnet_service_endpoint = false
+    }]
+  }]
   depends_on = [
     azurerm_resource_group.this,
     module.vnet
