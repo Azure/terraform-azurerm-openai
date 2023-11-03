@@ -7,9 +7,17 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.0"
     }
+    modtm = {
+      source  = "Azure/modtm"
+      version = ">= 0.1.8, < 1.0"
+    }
   }
 }
 
 provider "azurerm" {
   features {}
+}
+
+provider "modtm" {
+  enabled = false
 }
