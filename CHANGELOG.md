@@ -4,7 +4,9 @@
 
 **Merged pull requests:**
 
+- Add module usage telemetry collection resource to this module [\#47](https://github.com/Azure/terraform-azurerm-openai/pull/47) ([lonegunmanb](https://github.com/lonegunmanb))
 - Move tracing tags section to the bottom [\#46](https://github.com/Azure/terraform-azurerm-openai/pull/46) ([lonegunmanb](https://github.com/lonegunmanb))
+- Add capacity to deployment varaibles [\#45](https://github.com/Azure/terraform-azurerm-openai/pull/45) ([joecks](https://github.com/joecks))
 - Bump google.golang.org/grpc from 1.55.0 to 1.56.3 in /test [\#43](https://github.com/Azure/terraform-azurerm-openai/pull/43) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.46.0 to 0.46.1 in /test [\#42](https://github.com/Azure/terraform-azurerm-openai/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Fix README after PR \#36 [\#41](https://github.com/Azure/terraform-azurerm-openai/pull/41) ([zioproto](https://github.com/zioproto))
