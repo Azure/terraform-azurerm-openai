@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.16.0 to 0.17.0 in /test [\#49](https://github.com/Azure/terraform-azurerm-openai/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add module usage telemetry collection resource to this module [\#47](https://github.com/Azure/terraform-azurerm-openai/pull/47) ([lonegunmanb](https://github.com/lonegunmanb))
 - Move tracing tags section to the bottom [\#46](https://github.com/Azure/terraform-azurerm-openai/pull/46) ([lonegunmanb](https://github.com/lonegunmanb))
 - Add capacity to deployment varaibles [\#45](https://github.com/Azure/terraform-azurerm-openai/pull/45) ([joecks](https://github.com/joecks))
