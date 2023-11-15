@@ -90,3 +90,23 @@ resource "azurerm_cognitive_deployment" "this" {
     capacity = try(each.value.capacity, 1)
   }
 }
+
+resource "azurerm_monitor_diagnostic_setting" "this" {
+  count                      = var.log_analytics_workspace_enabled ? 1 : 0
+  name                       = local.account_name
+  target_resource_id         = azurerm_cognitive_account.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace.id
+
+  enabled_log {
+    category_group = "AllLogs"
+  }
+
+  enabled_log {
+    category_group = "Audit"
+  }
+
+  metric {
+    enabled  = true
+    category = "AllMetrics"
+  }
+}

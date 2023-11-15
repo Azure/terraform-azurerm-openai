@@ -169,6 +169,24 @@ variable "local_auth_enabled" {
   description = "Whether local authentication methods is enabled for the Cognitive Account. Defaults to `true`."
 }
 
+variable "log_analytics_workspace" {
+  type = object({
+    id                  = string
+    name                = optional(string)
+    location            = optional(string)
+    resource_group_name = optional(string)
+  })
+  default     = null
+  description = "(Optional) Existing azurerm_log_analytics_workspace."
+}
+
+variable "log_analytics_workspace_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable the integration of azurerm_log_analytics_workspace"
+  nullable    = false
+}
+
 variable "network_acls" {
   type = set(object({
     default_action = string
