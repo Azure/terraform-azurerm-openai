@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/gruntwork-io/terratest from 0.46.1 to 0.46.7 in /test [\#52](https://github.com/Azure/terraform-azurerm-openai/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/Azure/terraform-module-test-helper from 0.16.0 to 0.17.0 in /test [\#49](https://github.com/Azure/terraform-azurerm-openai/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add module usage telemetry collection resource to this module [\#47](https://github.com/Azure/terraform-azurerm-openai/pull/47) ([lonegunmanb](https://github.com/lonegunmanb))
 - Move tracing tags section to the bottom [\#46](https://github.com/Azure/terraform-azurerm-openai/pull/46) ([lonegunmanb](https://github.com/lonegunmanb))
