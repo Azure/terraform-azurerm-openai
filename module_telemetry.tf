@@ -9,7 +9,7 @@ resource "modtm_telemetry" "this" {
     avm_yor_name             = "this"
     avm_yor_trace            = "ff104cd4-caac-4001-92bc-fc960726a6f9"
   }
-  nonce = 23463
+  nonce = 21859
 
   lifecycle {
     ignore_changes = [nonce]
