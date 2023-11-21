@@ -1,11 +1,11 @@
-output "openai_id" {
-  description = "The ID of the Cognitive Service Account."
-  value       = azurerm_cognitive_account.this.id
-}
-
 output "openai_endpoint" {
   description = "The endpoint used to connect to the Cognitive Service Account."
   value       = azurerm_cognitive_account.this.endpoint
+}
+
+output "openai_id" {
+  description = "The ID of the Cognitive Service Account."
+  value       = azurerm_cognitive_account.this.id
 }
 
 output "openai_primary_key" {
