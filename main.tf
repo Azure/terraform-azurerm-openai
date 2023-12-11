@@ -64,13 +64,6 @@ resource "azurerm_cognitive_account" "this" {
       }
     }
   }
-  dynamic "storage" {
-    for_each = var.storage
-    content {
-      storage_account_id = storage.value.storage_account_id
-      identity_client_id = storage.value.identity_client_id
-    }
-  }
 }
 
 resource "azurerm_cognitive_deployment" "this" {
