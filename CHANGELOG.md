@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Drop storage block: OpenAI does not support it [\#56](https://github.com/Azure/terraform-azurerm-openai/pull/56) ([zioproto](https://github.com/zioproto))
 - Bump github.com/gruntwork-io/terratest from 0.46.7 to 0.46.8 in /test [\#55](https://github.com/Azure/terraform-azurerm-openai/pull/55) ([dependabot[bot]](https://github.com/apps/dependabot))
 - output: The ID of the Cognitive Service Account [\#53](https://github.com/Azure/terraform-azurerm-openai/pull/53) ([zioproto](https://github.com/zioproto))
 - Bump github.com/gruntwork-io/terratest from 0.46.1 to 0.46.7 in /test [\#52](https://github.com/Azure/terraform-azurerm-openai/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
