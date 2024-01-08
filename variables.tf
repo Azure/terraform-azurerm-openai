@@ -49,13 +49,14 @@ variable "default_tags_enabled" {
 
 variable "deployment" {
   type = map(object({
-    name            = string
-    model_format    = string
-    model_name      = string
-    model_version   = string
-    scale_type      = string
-    rai_policy_name = optional(string)
-    capacity        = optional(number)
+    name                   = string
+    model_format           = string
+    model_name             = string
+    model_version          = string
+    scale_type             = string
+    rai_policy_name        = optional(string)
+    capacity               = optional(number)
+    version_upgrade_option = optional(string)
   }))
   default     = {}
   description = <<-DESCRIPTION
@@ -72,6 +73,7 @@ variable "deployment" {
         }
         rai_policy_name = (Optional) The name of RAI policy. Changing this forces a new resource to be created.
         capacity = (Optional) Tokens-per-Minute (TPM). The unit of measure for this field is in the thousands of Tokens-per-Minute. Defaults to 1 which means that the limitation is 1000 tokens per minute.
+        version_upgrade_option = (Optional) Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`. Changing this forces a new resource to be created.
       }))
   DESCRIPTION
   nullable    = false
