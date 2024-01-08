@@ -69,9 +69,10 @@ resource "azurerm_cognitive_account" "this" {
 resource "azurerm_cognitive_deployment" "this" {
   for_each = var.deployment
 
-  cognitive_account_id = azurerm_cognitive_account.this.id
-  name                 = each.value.name
-  rai_policy_name      = each.value.rai_policy_name
+  cognitive_account_id   = azurerm_cognitive_account.this.id
+  name                   = each.value.name
+  rai_policy_name        = each.value.rai_policy_name
+  version_upgrade_option = each.value.version_upgrade_option
 
   model {
     format  = each.value.model_format
