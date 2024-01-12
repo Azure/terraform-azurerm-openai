@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Azure/terraform-azurerm-openai/tree/HEAD)
+## [v0.1.2](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.2) (2024-01-08)
 
 **Merged pull requests:**
 
