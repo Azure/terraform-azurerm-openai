@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-openai/tree/HEAD)
+
+**Merged pull requests:**
+
+- Bump github.com/gruntwork-io/terratest from 0.46.8 to 0.46.11 in /test [\#63](https://github.com/Azure/terraform-azurerm-openai/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.1.2](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.2) (2024-01-08)
 
 **Merged pull requests:**
