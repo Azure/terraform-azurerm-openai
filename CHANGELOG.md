@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- fix\(main.tf\): network\_acls set to list [\#64](https://github.com/Azure/terraform-azurerm-openai/pull/64) ([tmatthews90](https://github.com/tmatthews90))
 - Bump github.com/gruntwork-io/terratest from 0.46.8 to 0.46.11 in /test [\#63](https://github.com/Azure/terraform-azurerm-openai/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.1.2](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.2) (2024-01-08)
