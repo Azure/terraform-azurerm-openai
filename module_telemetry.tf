@@ -9,7 +9,7 @@ resource "modtm_telemetry" "this" {
     avm_yor_name             = "this"
     avm_yor_trace            = "0595de0a-d0b6-4ea8-a85f-bac99e56a41b"
   }
-  ephemeral_number = 3035
+  ephemeral_number = 18149
 
   lifecycle {
     ignore_changes = [ephemeral_number]
