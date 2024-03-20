@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 in /test [\#67](https://github.com/Azure/terraform-azurerm-openai/pull/67) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github.com/Azure/terraform-module-test-helper from 0.17.0 to 0.19.0 in /test [\#66](https://github.com/Azure/terraform-azurerm-openai/pull/66) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.1.3](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.3) (2024-01-28)
 
