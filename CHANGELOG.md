@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.20.0 to 0.21.0 in /test [\#74](https://github.com/Azure/terraform-azurerm-openai/pull/74) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.46.13 to 0.46.14 in /test [\#73](https://github.com/Azure/terraform-azurerm-openai/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/hashicorp/go-getter from 1.7.1 to 1.7.4 in /test [\#72](https://github.com/Azure/terraform-azurerm-openai/pull/72) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump golang.org/x/net from 0.21.0 to 0.23.0 in /test [\#71](https://github.com/Azure/terraform-azurerm-openai/pull/71) ([dependabot[bot]](https://github.com/apps/dependabot))
