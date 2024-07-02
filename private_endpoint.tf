@@ -6,7 +6,7 @@ locals {
 resource "azurerm_private_endpoint" "this" {
   for_each = var.private_endpoint
 
-  location            = data.azurerm_resource_group.pe_vnet_rg[each.key].location
+  location            = each.value.location != null ? each.value.location : data.azurerm_resource_group.pe_vnet_rg[each.key].location
   name                = each.value.name
   resource_group_name = data.azurerm_resource_group.pe_vnet_rg[each.key].name
   subnet_id           = data.azurerm_subnet.pe_subnet[each.key].id

@@ -226,6 +226,7 @@ variable "private_endpoint" {
     vnet_rg_name                       = string
     vnet_name                          = string
     subnet_name                        = string
+    location                           = optional(string, null)
     dns_zone_virtual_network_link_name = optional(string, "dns_zone_link")
     private_dns_entry_enabled          = optional(bool, false)
     private_service_connection_name    = optional(string, "privateserviceconnection")
