@@ -11,12 +11,12 @@ resource "azurerm_private_endpoint" "this" {
   resource_group_name = data.azurerm_resource_group.pe_vnet_rg[each.key].name
   subnet_id           = data.azurerm_subnet.pe_subnet[each.key].id
   tags = merge(local.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
-    avm_git_commit           = "c8b6b17b0b28a2aa54a3e734b9bd0a0d0ef5c267"
+    avm_git_commit           = "71363fdf53bbd421fccb3db49a9900389d728e4a"
     avm_git_file             = "private_endpoint.tf"
-    avm_git_last_modified_at = "2023-05-04 10:08:08"
+    avm_git_last_modified_at = "2024-06-27 07:37:22"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "1e2b5639-f1e7-4e5f-b148-8383d1211001"
+    avm_yor_trace            = "24fc9ceb-ed18-48e7-90ab-a370e7f746ec"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "this"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
@@ -55,7 +55,7 @@ resource "azurerm_private_dns_zone" "dns_zone" {
     avm_git_last_modified_at = "2023-05-09 12:30:19"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "85f98475-3918-4ae8-9e40-895dbba2fe01"
+    avm_yor_trace            = "33c244f9-66f5-4a9e-9d6c-030d24d41fad"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "dns_zone"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
@@ -75,7 +75,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dns_zone_link" {
     avm_git_last_modified_at = "2023-05-04 10:08:08"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-openai"
-    avm_yor_trace            = "907893b7-010a-46b0-9957-5229cf9421a0"
+    avm_yor_trace            = "f0ecd6fe-20df-4d07-b674-ae427b6db36f"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "dns_zone_link"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
