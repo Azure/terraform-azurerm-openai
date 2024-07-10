@@ -31,3 +31,9 @@ output "private_ip_addresses" {
     for key, pe in azurerm_private_endpoint.this : key => pe.private_service_connection[0].private_ip_address
   }
 }
+
+output "cognitive_account_identity" {
+  description = "The identity block exports the Principal ID and the Tenant ID associated with this Managed Service Identity."
+  value       = try(azurerm_cognitive_account.this.identity[0], null)
+}
+
