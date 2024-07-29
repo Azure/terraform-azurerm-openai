@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.24.0 to 0.25.0 in /test [\#88](https://github.com/Azure/terraform-azurerm-openai/pull/88) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.46.15 to 0.46.16 in /test [\#82](https://github.com/Azure/terraform-azurerm-openai/pull/82) ([dependabot[bot]](https://github.com/apps/dependabot))
 - feat\(private\_endpoint.tf\) allow custom location on private-endpoint [\#81](https://github.com/Azure/terraform-azurerm-openai/pull/81) ([matthiasritter](https://github.com/matthiasritter))
 - Bump github.com/Azure/terraform-module-test-helper from 0.23.0 to 0.24.0 in /test [\#80](https://github.com/Azure/terraform-azurerm-openai/pull/80) ([dependabot[bot]](https://github.com/apps/dependabot))
