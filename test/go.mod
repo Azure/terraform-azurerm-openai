@@ -6,7 +6,7 @@ toolchain go1.21.2
 
 require (
 	github.com/Azure/terraform-module-test-helper v0.25.0
-	github.com/gruntwork-io/terratest v0.47.0
+	github.com/gruntwork-io/terratest v0.47.1
 )
 
 require (
@@ -44,7 +44,7 @@ require (
 	github.com/gruntwork-io/go-commons v0.17.2 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-getter v1.7.5 // indirect
+	github.com/hashicorp/go-getter v1.7.6 // indirect
 	github.com/hashicorp/go-getter/v2 v2.2.3 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
