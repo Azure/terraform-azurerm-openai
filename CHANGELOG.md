@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/gruntwork-io/terratest from 0.47.0 to 0.47.1 in /test [\#95](https://github.com/Azure/terraform-azurerm-openai/pull/95) ([dependabot[bot]](https://github.com/apps/dependabot))
 - chore: remove ephemeral number because of deprecation and use new module telemetry solution [\#89](https://github.com/Azure/terraform-azurerm-openai/pull/89) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.24.0 to 0.25.0 in /test [\#88](https://github.com/Azure/terraform-azurerm-openai/pull/88) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add to output identity block values [\#85](https://github.com/Azure/terraform-azurerm-openai/pull/85) ([zioproto](https://github.com/zioproto))
