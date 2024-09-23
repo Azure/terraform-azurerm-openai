@@ -24,7 +24,7 @@ jobs:
 
   run-e2e-tests:
     if: github.event.pull_request.head.repo.fork == false
-    uses: Azure/tfmod-scaffold/.github/workflows/tfvm_e2e.yaml@oidc
+    uses: Azure/tfmod-scaffold/.github/workflows/tfvm_e2e.yaml@main
     name: end to end
     secrets: inherit
     permissions:
