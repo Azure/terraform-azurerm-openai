@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-openai/tree/HEAD)
+
+**Merged pull requests:**
+
+- Use oidc as authentication method [\#97](https://github.com/Azure/terraform-azurerm-openai/pull/97) ([lonegunmanb](https://github.com/lonegunmanb))
+
 ## [v0.1.4](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.4) (2024-09-02)
 
 **Merged pull requests:**
