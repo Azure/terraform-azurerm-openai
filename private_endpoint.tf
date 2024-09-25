@@ -1,6 +1,7 @@
 locals {
-  private_dns_zone_id   = length(var.private_endpoint) > 0 ? try(azurerm_private_dns_zone.dns_zone[0].id, data.azurerm_private_dns_zone.dns_zone[0].id) : null
-  private_dns_zone_name = length(var.private_endpoint) > 0 ? try(azurerm_private_dns_zone.dns_zone[0].name, data.azurerm_private_dns_zone.dns_zone[0].name) : null
+  private_dns_zone_id    = length(var.private_endpoint) > 0 ? try(azurerm_private_dns_zone.dns_zone[0].id, data.azurerm_private_dns_zone.dns_zone[0].id) : null
+  private_dns_zone_name  = length(var.private_endpoint) > 0 ? try(azurerm_private_dns_zone.dns_zone[0].name, data.azurerm_private_dns_zone.dns_zone[0].name) : null
+  private_endpoint_links = length(var.private_endpoint) > 0 && var.private_dns_zone == null ? var.private_endpoint : {}
 }
 
 resource "azurerm_private_endpoint" "this" {
@@ -62,7 +63,7 @@ resource "azurerm_private_dns_zone" "dns_zone" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "dns_zone_link" {
-  for_each = var.private_endpoint
+  for_each = local.private_endpoint_links
 
   name                  = each.value.dns_zone_virtual_network_link_name
   private_dns_zone_name = local.private_dns_zone_name
