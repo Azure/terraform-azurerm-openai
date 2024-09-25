@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - Use oidc as authentication method [\#97](https://github.com/Azure/terraform-azurerm-openai/pull/97) ([lonegunmanb](https://github.com/lonegunmanb))
+- When user provides a private DNS zone we assume it is already linked to the vnet [\#93](https://github.com/Azure/terraform-azurerm-openai/pull/93) ([zioproto](https://github.com/zioproto))
 
 ## [v0.1.4](https://github.com/Azure/terraform-azurerm-openai/tree/v0.1.4) (2024-09-02)
 
