@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Add deprecation notice [\#98](https://github.com/Azure/terraform-azurerm-openai/pull/98) ([soferreira](https://github.com/soferreira))
 - Use oidc as authentication method [\#97](https://github.com/Azure/terraform-azurerm-openai/pull/97) ([lonegunmanb](https://github.com/lonegunmanb))
 - When user provides a private DNS zone we assume it is already linked to the vnet [\#93](https://github.com/Azure/terraform-azurerm-openai/pull/93) ([zioproto](https://github.com/zioproto))
 
